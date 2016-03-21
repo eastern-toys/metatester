@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metapuzzle Tester</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+  <script src="metatester.js"></script>
+  <link rel="stylesheet" type="text/css" href="metatester.css">
+</head>
+<body>
+  <div id="answersection"></div>
+  <script>
+    metatester({
+      // A selector for the DOM element that will be populated with the answer UI.
+      answerSectionSelector: '#answersection',
+
+      // The number of answers that should be initially revealed.
+      numStartAnswers: 2,
+
+      // The answers that feed into the metapuzzle.
+      answers: [
+        'APPLE',
+        'BANANA',
+        'GRAPEFRUIT',
+        'KIWI',
+        'ORANGE',
+      ],
+    });
+  </script>
+
+  <hr>
+
+  <div>
+    <p>Puzzle specific content goes down here.</p>
+  </div>
+
+</body>
+</html>

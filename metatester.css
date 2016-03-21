@@ -1,0 +1,27 @@
+body {
+    font-family: Helvetica;
+}
+
+#metatester-seedprompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#metatester-seedprompt * + * {
+    margin-top: 8px;
+}
+
+#metatester-answersection {
+    display: flex;
+    align-items: center;
+}
+
+#metatester-answersection * + * {
+    margin-right: 16px;
+}
+
+#metatester-answercolumn {
+    display: flex;
+    flex-direction: column;
+}
