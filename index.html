@@ -12,13 +12,19 @@
   <div id="answersection"></div>
   <script>
     metatester({
-      // A selector for the DOM element that will be populated with the answer UI.
+      // A selector for the DOM element that will be populated with the answer
+      // UI. You probably don't need to change this, but it may be useful if
+      // your metapuzzle has unusual presentation requirements.
       answerSectionSelector: '#answersection',
 
-      // The number of answers that should be initially revealed.
+      // The number of answers that should be initially revealed. You'll
+      // probably want to adjust this based on the number of answers used by
+      // your metapuzzle.
       numStartAnswers: 2,
 
-      // The answers that feed into the metapuzzle.
+      // The answers that feed into the metapuzzle. Change this to contain the
+      // answers to your metapuzzle, in the order in which they will be
+      // presented to the user during the hunt (if order is significant).
       answers: [
         'APPLE',
         'BANANA',
