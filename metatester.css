@@ -17,8 +17,8 @@ body {
     align-items: center;
 }
 
-#metatester-answersection * + * {
-    margin-right: 16px;
+#metatester-answersection div + div {
+    margin-left: 16px;
 }
 
 #metatester-answercolumn {
