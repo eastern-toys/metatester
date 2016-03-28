@@ -58,7 +58,11 @@
     $('#metatester-answercolumn *').remove();
 
     Math.seedrandom(seedWord);
-    var answerIndices = _.range(options.answers.length);
+    var answers = options.answers;
+    if (options.randomizeAnswerOrder) {
+      answers = _.shuffle(answers);
+    }
+    var answerIndices = _.range(answers.length);
     var revealedAnswerIndices = [];
     for (var i = 0; i < numRevealed; i++) {
       var index = _.sample(answerIndices);
@@ -66,7 +70,7 @@
       answerIndices = _.without(answerIndices, index);
     }
 
-    _.each(options.answers, function(answer, i) {
+    _.each(answers, function(answer, i) {
       if (_.contains(revealedAnswerIndices, i)) {
 	$('#metatester-answercolumn').append(
 	  '<span>' + answer + '</span>');
