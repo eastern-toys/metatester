@@ -33,23 +33,29 @@
       // your metapuzzle.
       numStartAnswers: 2,
 
-      // If true, then the order of the answers listed below will be randomized
-      // when presented to the user. If false, then the answers will be
-      // presented in the order listed in this file (although they will be
-      // revealed in a random order).
-      randomizeAnswerOrder: false,
-
       // The answers that feed into the metapuzzle. Change this to contain the
       // answers to your metapuzzle, in the order in which they will be
       // presented to the user during the hunt (if order is significant). If
       // the order is significant, then be sure to set randomizeAnswerOrder to
       // false.
+      //
+      // This version of metatester is modified to present the answers in a
+      // grid. Each list of answers below represents a column of the grid.
       answers: [
-        'APPLE',
-        'BANANA',
-        'GRAPEFRUIT',
-        'KIWI',
-        'ORANGE',
+	[
+          'APPLE',
+          'BANANA',
+          'GRAPEFRUIT',
+          'KIWI',
+          'ORANGE',
+	],
+	[
+	  'BROCCOLI',
+	  'CARROT',
+	  'CAULIFLOWER',
+	  'OKRA',
+	  'POTATO',
+	],
       ],
     });
   </script>

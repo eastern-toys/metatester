@@ -35,7 +35,7 @@
   function createAnswerSection() {
     $(options.answerSectionSelector).append(
       '<div id="metatester-answersection">' +
-	'<div id="metatester-answercolumn"></div>' +
+	'<div id="metatester-answersdiv"></div>' +
 	'<div id="metatester-controls">' +
 	'<button id="metatester-nextanswer">Reveal Another Answer</button>' +
 	'</div>' +
@@ -45,40 +45,51 @@
   }
 
   function onNextAnswer() {
-    if (numRevealed < options.answers.length) {
+    var numAnswers = options.answers.length * options.answers[0].length;
+    if (numRevealed < numAnswers) {
       numRevealed++;
       updateAnswers();
     }
-    if (numRevealed == options.answers.length) {
+    if (numRevealed == numAnswers) {
       $('#metatester-nextanswer').prop('disabled', true);
     }
   }
 
   function updateAnswers() {
-    $('#metatester-answercolumn *').remove();
+    $('#metatester-answersdiv *').remove();
 
     Math.seedrandom(seedWord);
     var answers = options.answers;
-    if (options.randomizeAnswerOrder) {
-      answers = _.shuffle(answers);
+    var answerIndices = [];
+    for (var i = 0; i < answers.length; i++) {
+      for (var j = 0; j < answers[i].length; j++) {
+	answerIndices.push([i, j]);
+      }
     }
-    var answerIndices = _.range(answers.length);
     var revealedAnswerIndices = [];
     for (var i = 0; i < numRevealed; i++) {
       var index = _.sample(answerIndices);
       revealedAnswerIndices.push(index);
-      answerIndices = _.without(answerIndices, index);
+      answerIndices = _.reject(answerIndices, function(answerIndex) {
+	return _.isEqual(index, answerIndex);
+      });
     }
 
-    _.each(answers, function(answer, i) {
-      if (_.contains(revealedAnswerIndices, i)) {
-	$('#metatester-answercolumn').append(
-	  '<span>' + answer + '</span>');
-      } else {
-	$('#metatester-answercolumn').append(
-	  '<span>??????????</span>');
+    $('#metatester-answersdiv').append(
+      '<table id="metatester-answertable"></table>');
+    for (var j = 0; j < answers[0].length; j++) {
+      $('#metatester-answertable').append('<tr></tr>');
+      for (var i = 0; i < answers.length; i++) {
+	var answer = '??????????';
+	if (_.find(revealedAnswerIndices, function(answerIndex) {
+	  return _.isEqual([i, j], answerIndex);
+	})) {
+	  answer = answers[i][j];
+	}
+	$('#metatester-answertable tr:nth-child(' + (j + 1) + ')').append(
+	  '<td>' + answer + '</td>');
       }
-    });
+    }
   }
 
   window.metatester = function(optionsArg) {

@@ -18,10 +18,15 @@ body {
 }
 
 #metatester-answersection * + * {
-    margin-right: 16px;
+    margin-left: 16px;
 }
 
-#metatester-answercolumn {
-    display: flex;
-    flex-direction: column;
+#metatester-answersdiv table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#metatester-answersdiv td {
+    padding: 8px;
+    min-width: 150px;
 }
