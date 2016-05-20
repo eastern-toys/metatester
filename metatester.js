@@ -36,6 +36,7 @@
     $(options.answerSectionSelector).append(
       '<div id="metatester-answersection">' +
 	'<div id="metatester-answercolumn"></div>' +
+	'<div id="metatester-imagecolumn"></div>' +
 	'<div id="metatester-controls">' +
 	'<button id="metatester-nextanswer">Reveal Another Answer</button>' +
 	'</div>' +
@@ -56,6 +57,7 @@
 
   function updateAnswers() {
     $('#metatester-answercolumn *').remove();
+    $('#metatester-imagecolumn *').remove();
 
     Math.seedrandom(seedWord);
     var answers = options.answers;
@@ -77,6 +79,13 @@
       } else {
 	$('#metatester-answercolumn').append(
 	  '<span>??????????</span>');
+      }
+    });
+
+    _.each(options.images, function(imageConfig) {
+      if (numRevealed === imageConfig.numAnswers) {
+	$('#metatester-imagecolumn').append(
+	  '<img src="' + imageConfig.image + '">');
       }
     });
   }
