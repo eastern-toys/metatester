@@ -57,7 +57,9 @@
 
   function updateAnswers() {
     $('#metatester-answercolumn *').remove();
-    $('#metatester-imagecolumn *').remove();
+    if (!options.appendImages) {
+      $('#metatester-imagecolumn *').remove();
+    }
 
     Math.seedrandom(seedWord);
     var answers = options.answers;
