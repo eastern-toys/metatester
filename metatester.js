@@ -28,6 +28,7 @@
     if (seedWord.length == 0) {
       return;
     }
+    seedWord = seedWord.trim().toLowerCase();
     $('#metatester-seedprompt').remove();
     createAnswerSection();
   }
