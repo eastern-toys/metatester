@@ -96,6 +96,10 @@
   window.metatester = function(optionsArg) {
     options = optionsArg;
     numRevealed = options.numStartAnswers;
-    createSeedPrompt();
+    if (options.useSeedWord) {
+      createSeedPrompt();
+    } else {
+      createAnswerSection();
+    }
   };
 })();
