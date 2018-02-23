@@ -6,13 +6,13 @@
   function createSeedPrompt() {
     $(options.answerSectionSelector).append(
       '<div id="metatester-seedprompt">' +
-	'<span>' +
-	'Enter a word, any word. Use the same word each time you want to ' +
-	'test this puzzle, and the same set of answers will be revealed.' +
-	'</span>' +
-	'<input type="text" id="metatester-seedinput" width="10">' +
-	'<button id="metatester-seedstart">Start</button>' +
-	'</div>');
+        '<span>' +
+	      'Enter a word, any word. Use the same word each time you want to ' +
+	      'test this puzzle, and the same set of answers will be revealed.' +
+	      '</span>' +
+	      '<input type="text" id="metatester-seedinput" width="10">' +
+	      '<button id="metatester-seedstart">Start</button>' +
+	      '</div>');
     $('#metatester-seedinput').keyup(onSeedInputKeyUp);
     $('#metatester-seedstart').click(onSeedStart);
   }
@@ -36,12 +36,12 @@
   function createAnswerSection() {
     $(options.answerSectionSelector).append(
       '<div id="metatester-answersection">' +
-	'<div id="metatester-answercolumn"></div>' +
-	'<div id="metatester-imagecolumn"></div>' +
-	'<div id="metatester-controls">' +
-	'<button id="metatester-nextanswer">Reveal Another Answer</button>' +
-	'</div>' +
-	'</div>');
+        '<div id="metatester-answercolumn"></div>' +
+        '<div id="metatester-imagecolumn"></div>' +
+        '<div id="metatester-controls">' +
+        '<button id="metatester-nextanswer">Reveal Another Answer</button>' +
+        '</div>' +
+        '</div>');
     updateAnswers();
     $('#metatester-nextanswer').click(onNextAnswer);
   }
@@ -77,18 +77,18 @@
 
     _.each(answers, function(answer, i) {
       if (_.contains(revealedAnswerIndices, i)) {
-	$('#metatester-answercolumn').append(
-	  '<span>' + answer + '</span>');
+        $('#metatester-answercolumn').append(
+          '<span>' + answer + '</span>');
       } else {
-	$('#metatester-answercolumn').append(
-	  '<span>??????????</span>');
+        $('#metatester-answercolumn').append(
+          '<span>??????????</span>');
       }
     });
 
     _.each(options.images, function(imageConfig) {
       if (numRevealed === imageConfig.numAnswers) {
-	$('#metatester-imagecolumn').append(
-	  '<img src="' + imageConfig.image + '">');
+        $('#metatester-imagecolumn').append(
+          '<img src="' + imageConfig.image + '">');
       }
     });
   }
