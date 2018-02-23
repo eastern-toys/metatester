@@ -79,7 +79,7 @@
       if (_.contains(revealedAnswerIndices, i)) {
         $('#metatester-answercolumn').append(
           '<span>' + answer + '</span>');
-      } else {
+      } else if (!options.hideUnrevealedAnswers) {
         $('#metatester-answercolumn').append(
           '<span>??????????</span>');
       }
